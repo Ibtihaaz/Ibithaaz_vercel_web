@@ -962,8 +962,151 @@
         align-items:flex-start;
         gap:20px;
       }
+       nav ul{
+        display:none;
+      }
 
-    }
+      .hero{
+        flex-direction:column;
+        text-align:center;
+      }
+
+      .profile{
+        width:100%;
+      }
+
+      .contact-wrapper{
+        grid-template-columns:1fr;
+      }
+
+      .title{
+        font-size:3.5rem;
+      }
+
+      .project-card{
+        min-width:88vw;
+      }
+
+      .projects-header{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:20px;
+      }
+
+    }/* ======================================
+   SKILLS
+====================================== */
+
+.skills-grid{
+
+  display:grid;
+
+  grid-template-columns:
+  repeat(auto-fit,minmax(260px,1fr));
+
+  gap:30px;
+
+}
+
+.skill-card{
+
+  padding:40px 30px;
+
+  text-align:center;
+
+  transition:0.5s ease;
+
+}
+
+.skill-card:hover{
+
+  transform:
+  translateY(-10px);
+
+  box-shadow:
+  0 0 30px rgba(125,211,252,0.18);
+
+}
+
+.skill-card i{
+
+  font-size:2.5rem;
+
+  margin-bottom:20px;
+
+  background:
+  linear-gradient(
+    45deg,
+    var(--cyan),
+    var(--purple)
+  );
+
+  -webkit-background-clip:text;
+
+  -webkit-text-fill-color:transparent;
+
+}
+
+.skill-card h3{
+
+  line-height:1.7;
+
+}
+
+/* ======================================
+   SCROLL ANIMATION
+====================================== */
+
+.hidden-section{
+
+  opacity:0;
+
+  transform:
+  translateY(80px);
+
+  transition:
+  all 1s ease;
+
+}
+
+.show-section{
+
+  opacity:1;
+
+  transform:
+  translateY(0);
+
+}
+
+/* ======================================
+   RESPONSIVE FIX
+====================================== */
+
+@media(max-width:768px){
+
+  .hero{
+
+    flex-direction:column;
+
+    text-align:center;
+
+  }
+
+  .profile{
+
+    width:100%;
+
+    height:auto;
+
+  }
+
+  .project-card{
+
+    min-width:88vw;
+
+  }
+
+}
 
   </style>
 
@@ -1017,9 +1160,10 @@
 
     <ul>
 
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Projects</a></li>
-      <li><a href="#">Contact</a></li>
+     <li><a href="#home">Home</a></li>
+     <li><a href="#skills">Skills</a></li>
+     <li><a href="#projects">Projects</a></li>
+     <li><a href="#contact">Contact</a></li>
 
     </ul>
 
@@ -1027,7 +1171,7 @@
 
   <!-- HERO -->
 
-  <section>
+  <section id="home">
 
     <div class="hero">
 
@@ -1077,10 +1221,100 @@
     </div>
 
   </section>
+  <!-- SKILLS -->
+
+<section id="skills">
+
+  <div class="projects-header">
+
+    <h1 class="section-title">
+
+      My Skills
+
+    </h1>
+
+  </div>
+
+  <div class="skills-grid">
+
+    <div class="glass skill-card">
+
+      <i class="fa-solid fa-code"></i>
+
+      <h3>
+
+        Software & Web Development
+
+      </h3>
+
+    </div>
+
+    <div class="glass skill-card">
+
+      <i class="fa-solid fa-pen-ruler"></i>
+
+      <h3>
+
+        UI/UX Design
+
+      </h3>
+
+    </div>
+
+    <div class="glass skill-card">
+
+      <i class="fa-solid fa-video"></i>
+
+      <h3>
+
+        Video Editing & Motion Graphics
+
+      </h3>
+
+    </div>
+
+    <div class="glass skill-card">
+
+      <i class="fa-solid fa-palette"></i>
+
+      <h3>
+
+        Graphic Design
+
+      </h3>
+
+    </div>
+
+    <div class="glass skill-card">
+
+      <i class="fa-solid fa-keyboard"></i>
+
+      <h3>
+
+        Content Writing & Copywriting
+
+      </h3>
+
+    </div>
+
+    <div class="glass skill-card">
+
+      <i class="fa-solid fa-database"></i>
+
+      <h3>
+
+        Data Entry & Virtual Assistance
+
+      </h3>
+
+    </div>
+
+  </div>
+
+</section>
 
   <!-- PROJECTS -->
-
-  <section>
+   <section id="projects">
 
     <div class="projects-header">
 
@@ -1364,7 +1598,7 @@
 
   <!-- CONTACT -->
 
-  <section>
+  <section id="contact">
 
     <div class="projects-header">
 
@@ -1615,7 +1849,41 @@
 
       });
 
+    }/* SCROLL REVEAL */
+
+const sections =
+document.querySelectorAll("section");
+
+sections.forEach(section=>{
+
+  section.classList.add(
+    "hidden-section"
+  );
+
+});
+
+window.addEventListener("scroll",()=>{
+
+  sections.forEach(section=>{
+
+    const top =
+    section.getBoundingClientRect().top;
+
+    if(top < window.innerHeight - 100){
+
+      section.classList.add(
+        "show-section"
+      );
+
     }
+
+  });
+
+});
+
+window.dispatchEvent(
+  new Event("scroll")
+);
 
   </script>
 
